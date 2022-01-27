@@ -25,3 +25,9 @@ div{
 p{
     margin-left: 45%;
 }
+tr{
+    display: table-cell;
+}
+table{
+    margin-top: 10%;
+}
