@@ -10,11 +10,11 @@ export class PlayerService {
 
   baseurl = "http://localhost:3000/api/players";
   constructor(private httpmeth: HttpClient) { }
-  Start():Observable<Player>{
-    return this.httpmeth.get(`${this.baseurl}/3`) as Observable<Player>
+  Deck():Observable<Player>{
+    return this.httpmeth.get(`${this.baseurl}/3`) as Observable<Player>//get deck info
   }
-  Draw():Observable<Player>{
-    return this.httpmeth.get(`${this.baseurl}/1`) as Observable<Player>
+  Table(): Observable<Player>{
+    return this.httpmeth.get(`${this.baseurl}/5`) as Observable<Player>//Table info
   }
   updateinfo(id: number):Observable<Player>{
     return this.httpmeth.get(`${this.baseurl}/${id}`) as Observable<Player>

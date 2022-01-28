@@ -17,28 +17,34 @@ export class PlayComponent implements OnInit {
   deck!: Player;
   dealer!: Player;
   Guest!: Player;
-  ngOnInit(): void {
-    this.playersrv.Start().subscribe({
+  table!: Player;
+  ngOnInit(): void { //loads deck into game
+    this.playersrv.Deck().subscribe({
       next: res => this.deck = res,
       error: err => console.log(err)
     });
-    this.updateplayerinfo();
+    this.updategameinfo();
   }
-  reset(): void{
+  reset(): void{ //all cards foreign key points to deck
     this.cardsrv.reset(this.deck).subscribe({
       next: res => console.log(res),
       error: err => console.log(err)
     })
   }
-  updateplayerinfo(): void{
+  updategameinfo(): void{ //refreshes with up to date player info
     let guestid = this.Guest.id;
     let dealerid = this.dealer.id;
+    let tableid = this.table.id;
     this.playersrv.updateinfo(guestid).subscribe({
       next: res => this.Guest = res,
       error: err => console.log(err)
     });
     this.playersrv.updateinfo(dealerid).subscribe({
       next: res => this.dealer = res,
+      error: err => console.log(err)
+    });
+    this.playersrv.updateinfo(tableid).subscribe({
+      next: res => this.table = res,
       error: err => console.log(err)
     });
   }
