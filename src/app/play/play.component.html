@@ -1,6 +1,7 @@
 <body class = bg-image>
-    <button class = "btn btn-danger" routerLink="/welcome">Leave</button><br>
-    <div>
+    <button class = "btn btn-danger" routerLink="/welcome">Leave</button>
+    <button class = "btn btn-primary">Play Again</button><br>
+    <div class = divtable>
         <table>
             <tr *ngFor = "let c of dealer.cards">
                 <td><img src = {{c.photo}}></td>
