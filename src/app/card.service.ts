@@ -15,4 +15,7 @@ export class CardService {
   reset(deck: Player): Observable<Card>{
     return this.httpmeth.put(`${this.baseurl}/reset/${deck}`, deck) as Observable<Card>
   }
+  Draw(guest: Player): Observable<Card>{ //assigns 3 cards to player and 3 blanks to table and dealer
+    return this.httpmeth.put(`${this.baseurl}/Start`, guest) as Observable<Card>
+  }
 }

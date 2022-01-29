@@ -15,4 +15,15 @@
             </tr>
         </table>
     </div>
+    <div>
+        <table>
+            <tr *ngFor = "let c of guest.cards">
+                <td><img src = {{c.photo}}></td>
+            </tr>
+        </table>
+    </div><br>
+    <span class = "playeroption">
+        <button class = "btn-warning" >DRAW</button>
+        <button class = "btn-success">HIT</button>
+    </span>
 </body>

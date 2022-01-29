@@ -16,7 +16,7 @@ export class PlayComponent implements OnInit {
 
   deck!: Player;
   dealer!: Player;
-  Guest!: Player;
+  guest!: Player;
   table!: Player;
   ngOnInit(): void { //loads deck into game
     this.playersrv.Deck().subscribe({
@@ -31,12 +31,20 @@ export class PlayComponent implements OnInit {
       error: err => console.log(err)
     })
   }
+  Draw(): void{
+    this.cardsrv.Draw(this.guest).subscribe({
+      next: res => {
+        console.log(res)
+        this.updategameinfo();},
+      error: err => console.log(err)
+    });
+  }
   updategameinfo(): void{ //refreshes with up to date player info
-    let guestid = this.Guest.id;
+    let guestid = this.guest.id;
     let dealerid = this.dealer.id;
     let tableid = this.table.id;
     this.playersrv.updateinfo(guestid).subscribe({
-      next: res => this.Guest = res,
+      next: res => this.guest = res,
       error: err => console.log(err)
     });
     this.playersrv.updateinfo(dealerid).subscribe({

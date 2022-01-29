@@ -37,3 +37,8 @@ table{
 .divtable{
     padding-left: 37%
 }
+.playeroption{
+    position: absolute;
+    left: 45%;
+    margin-top: 40%
+}
