@@ -1,21 +1,21 @@
 <body class = bg-image>
     <button class = "btn btn-danger" routerLink="/welcome">Leave</button>
-    <button class = "btn btn-primary">Play Again</button><br>
+    <button class = "btn btn-primary" (click) = ngOnInit()>Play Again</button><br>
     <div class = divtable>
         <table>
             <tr *ngFor = "let c of dealer.cards">
                 <td><img src = {{c.photo}}></td>
             </tr>
         </table>
-    </div>
-    <div>
+    </div><br>
+    <div class = divtable>
         <table>
             <tr *ngFor = "let c of table.cards">
                 <td><img src = {{c.photo}}></td>
             </tr>
         </table>
-    </div>
-    <div>
+    </div><br>
+    <div class = divtable>
         <table>
             <tr *ngFor = "let c of guest.cards">
                 <td><img src = {{c.photo}}></td>
