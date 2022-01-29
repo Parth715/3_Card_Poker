@@ -23,26 +23,28 @@ export class PlayComponent implements OnInit {
       next: res => this.deck = res,
       error: err => console.log(err)
     });
-    this.updategameinfo();
+    this.reset();
   }
   reset(): void{ //all cards foreign key points to deck
     this.cardsrv.reset(this.deck).subscribe({
-      next: res => console.log(res),
+      next: res => {
+        console.log(res)
+        this.updategameinfo();},
       error: err => console.log(err)
     })
   }
   Draw(): void{
     this.cardsrv.Draw(this.guest).subscribe({
       next: res => {
-        console.log(res)
-        this.updategameinfo();},
+        console.log(res)},
       error: err => console.log(err)
     });
+    this.updategameinfo();
   }
   updategameinfo(): void{ //refreshes with up to date player info
-    let guestid = this.guest.id;
-    let dealerid = this.dealer.id;
-    let tableid = this.table.id;
+    let guestid = 1;
+    let dealerid = 4;
+    let tableid = 5;
     this.playersrv.updateinfo(guestid).subscribe({
       next: res => this.guest = res,
       error: err => console.log(err)
