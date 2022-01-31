@@ -23,7 +23,11 @@
         </table>
     </div><br>
     <span class = "playeroption">
-        <button class = "btn-warning" (click) = Draw() >DRAW</button>
-        <button class = "btn-success">HIT</button>
+        <div *ngIf = drawn>
+            <button class = "btn-warning" (click) = Draw()>DRAW</button>
+        </div>
+        <div>
+            <button class = "btn-success">HIT</button>
+        </div>
     </span>
 </body>
