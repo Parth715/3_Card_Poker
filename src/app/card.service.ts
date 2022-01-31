@@ -18,4 +18,7 @@ export class CardService {
   Draw(guest: Player): Observable<Card>{ //assigns 3 cards to player and 3 blanks to table and dealer
     return this.httpmeth.put(`${this.baseurl}/Start`, guest) as Observable<Card>
   }
+  Hit(dealer: Player): Observable<Player>{
+    return this.httpmeth.put(`${this.baseurl}/check/${dealer}`, dealer) as Observable<Player>
+  }
 }

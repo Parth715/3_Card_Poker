@@ -26,8 +26,8 @@
         <div *ngIf = drawn>
             <button class = "btn-warning" (click) = Draw()>DRAW</button>
         </div>
-        <div>
-            <button class = "btn-success">HIT</button>
+        <div *ngIf= hit>
+            <button class = "btn-success" (click) = Hit()>HIT</button>
         </div>
     </span>
 </body>

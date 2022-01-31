@@ -18,8 +18,10 @@ export class PlayComponent implements OnInit {
   guest!: Player;
   table!: Player; 
   drawn!: boolean;
+  hit!: boolean;
   ngOnInit(): void { //loads deck into game
-    this.drawn = true
+    this.drawn = true;
+    this.hit = true;
     this.playersrv.Deck().subscribe({
       next: res => {
         this.deck = res
@@ -62,6 +64,12 @@ export class PlayComponent implements OnInit {
     });
   }
   Hit(): void{
-    
+    this.hit = false;
+    this.cardsrv.Hit(this.dealer).subscribe({
+      next: res => {
+        console.log(res)
+        this.updategameinfo()},
+      error: err => console.log(err)
+    });
   }
 }
