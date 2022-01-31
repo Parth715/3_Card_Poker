@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { resetFakeAsyncZone } from '@angular/core/testing';
 import { CardService } from '../card.service';
 import { Player } from '../player';
 import { PlayerService } from '../player.service';
@@ -17,13 +16,16 @@ export class PlayComponent implements OnInit {
   deck!: Player;
   dealer!: Player;
   guest!: Player;
-  table!: Player;
+  table!: Player; 
+  drawn!: boolean;
   ngOnInit(): void { //loads deck into game
+    this.drawn = true
     this.playersrv.Deck().subscribe({
-      next: res => this.deck = res,
+      next: res => {
+        this.deck = res
+        this.reset();},
       error: err => console.log(err)
     });
-    this.reset();
   }
   reset(): void{ //all cards foreign key points to deck
     this.cardsrv.reset(this.deck).subscribe({
@@ -34,12 +36,13 @@ export class PlayComponent implements OnInit {
     })
   }
   Draw(): void{
+    this.drawn = false;
     this.cardsrv.Draw(this.guest).subscribe({
       next: res => {
-        console.log(res)},
+        console.log(res)
+        this.updategameinfo();},
       error: err => console.log(err)
     });
-    this.updategameinfo();
   }
   updategameinfo(): void{ //refreshes with up to date player info
     let guestid = 1;
@@ -57,5 +60,8 @@ export class PlayComponent implements OnInit {
       next: res => this.table = res,
       error: err => console.log(err)
     });
+  }
+  Hit(): void{
+    
   }
 }
