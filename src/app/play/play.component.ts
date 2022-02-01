@@ -65,9 +65,9 @@ export class PlayComponent implements OnInit {
   }
   Hit(): void{
     this.hit = false;
-    this.cardsrv.Hit(this.dealer).subscribe({
+    this.cardsrv.Hit(this.guest).subscribe({
       next: res => {
-        console.log(res)
+        this.guest = res
         this.updategameinfo()},
       error: err => console.log(err)
     });

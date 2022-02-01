@@ -43,15 +43,24 @@ table{
     left: 45%;
     margin-top: 40%
 }
-.btn-warning{
+.pairplus{
     position: fixed;
     bottom: 2%;
     left: 40%;
     width: 5%;
 }
-.btn-success{
+.ante{
     position: fixed;
     bottom: 2%;
     left: 50%;
+    width: 5%
+}
+.btn-success{
+    position: fixed;
+    bottom: 2%;
+    left: 60%;
     width: 5%;
+}
+.gap{
+    height: 200px;
 }

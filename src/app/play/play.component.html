@@ -8,10 +8,9 @@
             </tr>
         </table>
     </div><br>
-    <div class = divtable>
+    <div class = "divtable gap">
         <table>
-            <tr *ngFor = "let c of table.cards">
-                <td><img src = {{c.photo}}></td>
+            <tr>
             </tr>
         </table>
     </div><br>
@@ -24,10 +23,13 @@
     </div><br>
     <span class = "playeroption">
         <div *ngIf = drawn>
-            <button class = "btn-warning" (click) = Draw()>DRAW</button>
+            <button class = "btn-warning ante" (click) = Draw()>Ante</button>
+        </div>
+        <div *ngIf = drawn>
+            <button class = "btn-warning pairplus">Pair+</button>
         </div>
         <div *ngIf= hit>
-            <button class = "btn-success" (click) = Hit()>HIT</button>
+            <button *ngIf = !drawn class = "btn-success" (click) = Hit()>HIT</button>
         </div>
     </span>
 </body>
