@@ -1,4 +1,4 @@
-<body class = bg-image>
+<body class = bg-image onload= ngOnInit>
     <button class = "btn btn-danger" routerLink="/welcome">Leave</button>
     <button class = "btn btn-primary" (click) = ngOnInit()>Play Again</button><br>
     <div class = divtable>
@@ -11,6 +11,7 @@
     <div class = "divtable gap">
         <table>
             <tr>
+                <h4>{{guest.outcome}}</h4>
             </tr>
         </table>
     </div><br>
@@ -22,14 +23,14 @@
         </table>
     </div><br>
     <span class = "playeroption">
-        <div *ngIf = drawn>
+        <div *ngIf = !hit>
             <button class = "btn-warning ante" (click) = Draw()>Ante</button>
         </div>
-        <div *ngIf = drawn>
+        <div *ngIf = !hit>
             <button class = "btn-warning pairplus">Pair+</button>
         </div>
         <div *ngIf= hit>
-            <button *ngIf = !drawn class = "btn-success" (click) = Hit()>HIT</button>
+            <button class = "btn-success" (click) = Hit()>HIT</button>
         </div>
     </span>
 </body>

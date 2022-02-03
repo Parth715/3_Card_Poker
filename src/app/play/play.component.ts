@@ -17,11 +17,9 @@ export class PlayComponent implements OnInit {
   dealer!: Player;
   guest!: Player;
   table!: Player; 
-  drawn!: boolean;
   hit!: boolean;
   ngOnInit(): void { //loads deck into game
-    this.drawn = true;
-    this.hit = true;
+    this.hit = false;
     this.playersrv.Deck().subscribe({
       next: res => {
         this.deck = res
@@ -38,7 +36,7 @@ export class PlayComponent implements OnInit {
     })
   }
   Draw(): void{
-    this.drawn = false;
+    this.hit = true;
     this.cardsrv.Draw(this.guest).subscribe({
       next: res => {
         console.log(res)
@@ -48,8 +46,7 @@ export class PlayComponent implements OnInit {
   }
   updategameinfo(): void{ //refreshes with up to date player info
     let guestid = 1;
-    let dealerid = 4;
-    let tableid = 5;
+    let dealerid = 3;
     this.playersrv.updateinfo(guestid).subscribe({
       next: res => this.guest = res,
       error: err => console.log(err)
@@ -58,18 +55,20 @@ export class PlayComponent implements OnInit {
       next: res => this.dealer = res,
       error: err => console.log(err)
     });
-    this.playersrv.updateinfo(tableid).subscribe({
-      next: res => this.table = res,
+  }
+  Hit(): void{
+    this.cardsrv.Hit(this.dealer).subscribe({
+      next: res => {
+        this.dealer = res
+        this.updatePlayer();},
       error: err => console.log(err)
     });
   }
-  Hit(): void{
-    this.hit = false;
-    this.cardsrv.Hit(this.guest).subscribe({
-      next: res => {
-        this.guest = res
-        this.updategameinfo()},
+  updatePlayer(): void{
+    this.playersrv.updateinfo(this.guest.id).subscribe({
+      next: res => { this.guest = res},
       error: err => console.log(err)
     });
   }
 }
+
