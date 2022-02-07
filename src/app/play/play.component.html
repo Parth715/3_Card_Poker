@@ -23,14 +23,14 @@
         </table>
     </div><br>
     <span class = "playeroption">
-        <div *ngIf = !hit>
-            <button class = "btn-warning ante" (click) = Draw()>Ante</button>
+        <div *ngIf = hit>
+            <button type = button class = "btn-warning ante" (click) = Draw()>Ante</button>
         </div>
-        <div *ngIf = !hit>
+        <div *ngIf = hide>
             <button class = "btn-warning pairplus">Pair+</button>
         </div>
-        <div *ngIf= hit>
-            <button class = "btn-success" (click) = Hit()>HIT</button>
+        <div *ngIf = !hit>
+            <button type = button class = "btn-success" (click) = Hit()>HIT</button>
         </div>
     </span>
 </body>

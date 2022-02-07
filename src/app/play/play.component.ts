@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CardService } from '../card.service';
 import { Player } from '../player';
 import { PlayerService } from '../player.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-play',
@@ -13,13 +14,14 @@ export class PlayComponent implements OnInit {
 
   constructor(private cardsrv: CardService, private playersrv: PlayerService) { }
 
+  hide: boolean = false;
   deck!: Player;
   dealer!: Player;
   guest!: Player;
   table!: Player; 
-  hit!: boolean;
+  hit: boolean = true;
   ngOnInit(): void { //loads deck into game
-    this.hit = false;
+    this.hit = true;
     this.playersrv.Deck().subscribe({
       next: res => {
         this.deck = res
@@ -36,7 +38,7 @@ export class PlayComponent implements OnInit {
     })
   }
   Draw(): void{
-    this.hit = true;
+    this.hit = false;
     this.cardsrv.Draw(this.guest).subscribe({
       next: res => {
         console.log(res)
