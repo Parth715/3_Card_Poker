@@ -30,6 +30,7 @@ export class PlayComponent implements OnInit {
     });
   }
   reset(): void{ //all cards foreign key points to deck
+    this.hide = false;
     this.cardsrv.reset(this.deck).subscribe({
       next: res => {
         console.log(res)
@@ -59,6 +60,7 @@ export class PlayComponent implements OnInit {
     });
   }
   Hit(): void{
+    this.hide=true;
     this.cardsrv.Hit(this.dealer).subscribe({
       next: res => {
         this.dealer = res

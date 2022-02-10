@@ -26,11 +26,11 @@
         <div *ngIf = hit>
             <button type = button class = "btn-warning ante" (click) = Draw()>Ante</button>
         </div>
-        <div *ngIf = hide>
+        <div *ngIf = false>
             <button class = "btn-warning pairplus">Pair+</button>
         </div>
         <div *ngIf = !hit>
-            <button type = button class = "btn-success" (click) = Hit()>HIT</button>
+            <button  *ngIf = !hide button class = "btn-success" (click) = Hit()>HIT</button>
         </div>
     </span>
 </body>

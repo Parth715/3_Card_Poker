@@ -10,7 +10,7 @@ import { Player } from './player';
 })
 export class CardService {
 
-  baseurl = "http://localhost:3000/api/cards"
+  baseurl = "http://parpate1.w32.wh-2.com/3_Card_Poker/api/cards"
   constructor(private httpmeth: HttpClient) { }
   reset(deck: Player): Observable<Card>{
     return this.httpmeth.put(`${this.baseurl}/reset/${deck}`, deck) as Observable<Card>

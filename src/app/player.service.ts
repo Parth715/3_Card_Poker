@@ -8,7 +8,7 @@ import { Player } from './player';
 })
 export class PlayerService {
 
-  baseurl = "http://localhost:3000/api/players";
+  baseurl = "http://parpate1.w32.wh-2.com/3_Card_Poker/api/players";
   constructor(private httpmeth: HttpClient) { }
   Deck():Observable<Player>{
     return this.httpmeth.get(`${this.baseurl}/2`) as Observable<Player>//get deck info
